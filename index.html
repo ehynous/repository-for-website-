@@ -5,17 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Emmett Scott Hynous — Sales &amp; Business Growth Leader</title>
 <meta name="description" content="Resume of Emmett Scott Hynous, Sales & Business Growth Leader specializing in digital transformation and legacy modernization.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #1b2a4a;
-    --blue: #2e5aac;
-    --blue-light: #4d7fd4;
-    --ink: #1f2430;
-    --muted: #5b6472;
-    --line: #e2e6ee;
-    --bg: #f7f8fb;
-    --card: #ffffff;
-    --radius: 10px;
+    --paper: #f4f1ea;
+    --surface: #ffffff;
+    --ink: #1a1712;
+    --ink-soft: #625b50;
+    --line: #e3ddd0;
+    --accent: #a8461f;
+    --accent-ink: #8a3616;
+    --accent-soft: #f0d9c9;
+    --dark: #16140f;
+    --dark-2: #211d16;
+    --on-dark: #f4efe6;
+    --on-dark-soft: #c9c0b1;
+    --radius: 14px;
   }
 
   * { box-sizing: border-box; }
@@ -24,226 +31,405 @@
 
   body {
     margin: 0;
-    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
     color: var(--ink);
-    background: var(--bg);
-    line-height: 1.55;
+    background: var(--paper);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
   }
 
-  a { color: var(--blue); }
+  a { color: var(--accent-ink); }
+
+  h1, h2, h3 { font-family: 'Fraunces', Georgia, serif; }
+
+  .wrap {
+    max-width: 1040px;
+    margin: 0 auto;
+    padding-left: 28px;
+    padding-right: 28px;
+  }
+
+  /* ---------- Nav ---------- */
 
   .topbar {
     position: sticky;
     top: 0;
-    z-index: 20;
-    background: var(--navy);
-    color: #fff;
+    z-index: 30;
+    background: var(--dark);
+    transition: background .25s ease, box-shadow .25s ease, border-color .25s ease;
+    border-bottom: 1px solid transparent;
+  }
+
+  .topbar.scrolled {
+    background: rgba(244, 241, 234, .92);
+    backdrop-filter: blur(10px);
+    border-bottom-color: var(--line);
   }
 
   .topbar-inner {
-    max-width: 960px;
-    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 24px;
+    padding: 18px 0;
   }
 
-  .topbar-name {
-    font-weight: 700;
-    letter-spacing: .02em;
-    font-size: 1.05rem;
+  .mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: inherit;
   }
+
+  .mark-badge {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--accent);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: .95rem;
+    flex-shrink: 0;
+  }
+
+  .mark-name {
+    font-weight: 700;
+    font-size: .95rem;
+    letter-spacing: .01em;
+    color: var(--on-dark);
+  }
+
+  .topbar.scrolled .mark-name { color: var(--ink); }
 
   nav.site-nav ul {
     list-style: none;
     display: flex;
-    gap: 20px;
+    gap: 28px;
     margin: 0;
     padding: 0;
   }
 
   nav.site-nav a {
-    color: #dbe3f5;
+    color: var(--on-dark-soft);
     text-decoration: none;
-    font-size: .92rem;
+    font-size: .85rem;
     font-weight: 600;
-    padding: 6px 2px;
+    letter-spacing: .01em;
+    padding: 4px 0;
     border-bottom: 2px solid transparent;
     transition: color .15s ease, border-color .15s ease;
   }
 
+  .topbar.scrolled nav.site-nav a { color: var(--ink-soft); }
+
   nav.site-nav a:hover,
   nav.site-nav a.active {
     color: #fff;
-    border-bottom-color: var(--blue-light);
+    border-bottom-color: var(--accent);
+  }
+
+  .topbar.scrolled nav.site-nav a:hover,
+  .topbar.scrolled nav.site-nav a.active {
+    color: var(--accent-ink);
   }
 
   .nav-toggle {
     display: none;
     background: none;
-    border: 1px solid #3c4c73;
-    color: #fff;
+    border: 1px solid rgba(244,239,230,.3);
+    color: var(--on-dark);
     border-radius: 6px;
     padding: 6px 10px;
     font-size: 1rem;
     cursor: pointer;
   }
 
-  header.hero {
-    background: linear-gradient(135deg, var(--navy), #223867 60%, var(--blue));
-    color: #fff;
-    padding: 56px 24px 48px;
+  .topbar.scrolled .nav-toggle {
+    border-color: var(--line);
+    color: var(--ink);
   }
 
-  .hero-inner {
-    max-width: 960px;
-    margin: 0 auto;
+  /* ---------- Hero ---------- */
+
+  header.hero {
+    background: radial-gradient(circle at 85% 0%, #2a2318 0%, var(--dark) 55%), var(--dark);
+    color: var(--on-dark);
+    padding: 30px 0 88px;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.25fr .85fr;
+    gap: 56px;
+    align-items: center;
+    margin-top: 40px;
+  }
+
+  .brand-tag {
+    display: inline-block;
+    padding: 6px 14px;
+    border: 1px solid rgba(244,239,230,.28);
+    border-radius: 999px;
+    font-size: .76rem;
+    font-weight: 600;
+    letter-spacing: .06em;
+    color: var(--accent-soft);
+    margin-bottom: 22px;
   }
 
   .hero h1 {
-    margin: 0 0 6px;
-    font-size: clamp(1.9rem, 4vw, 2.6rem);
-    letter-spacing: .01em;
+    margin: 0 0 10px;
+    font-weight: 600;
+    font-size: clamp(2.1rem, 4.4vw, 3.1rem);
+    line-height: 1.08;
+    letter-spacing: -.01em;
   }
 
   .hero .title {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
     font-weight: 600;
-    color: #cfe0ff;
-    margin: 0 0 18px;
+    color: var(--accent-soft);
+    margin: 0 0 24px;
+  }
+
+  .summary {
+    max-width: 540px;
+    color: var(--on-dark-soft);
+    font-size: 1rem;
+    margin: 0 0 30px;
   }
 
   .contact-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 14px 24px;
-    font-size: .95rem;
-    color: #e6ecfb;
-    margin-bottom: 22px;
+    gap: 10px 10px;
   }
 
-  .contact-row span {
+  .contact-row a,
+  .contact-row span.static {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
+    font-size: .85rem;
+    font-weight: 500;
+    color: var(--on-dark);
+    text-decoration: none;
+    border: 1px solid rgba(244,239,230,.2);
+    padding: 8px 14px;
+    border-radius: 999px;
+    transition: border-color .15s ease, background .15s ease;
   }
 
-  .contact-row a { color: #e6ecfb; }
-
-  .summary {
-    max-width: 760px;
-    color: #e9eefb;
-    font-size: 1rem;
+  .contact-row a:hover {
+    border-color: var(--accent);
+    background: rgba(168,70,31,.18);
   }
 
-  main {
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 40px 24px 80px;
+  .contact-row svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+  .hero-photo-col { display: flex; justify-content: center; }
+
+  .hero-photo-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
   }
 
-  section { margin-bottom: 48px; scroll-margin-top: 72px; }
-
-  h2.section-title {
-    font-size: 1.3rem;
-    color: var(--navy);
-    margin: 0 0 20px;
-    padding-bottom: 10px;
-    border-bottom: 3px solid var(--blue);
-    display: inline-block;
+  .hero-photo-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 18px -18px -18px 18px;
+    background: var(--accent);
+    border-radius: 20px;
+    z-index: 0;
   }
 
-  .expertise-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px 20px;
+  .hero-photo {
+    position: relative;
+    z-index: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 24px 48px rgba(0,0,0,.4);
+    aspect-ratio: 4 / 4.4;
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ---------- Main sections ---------- */
+
+  main { padding: 76px 0 40px; }
+
+  section { margin-bottom: 84px; scroll-margin-top: 88px; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  .section-num {
+    font-family: 'Fraunces', serif;
+    font-size: .95rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: .72rem;
+    font-weight: 700;
+    color: var(--ink-soft);
+  }
+
+  h2.section-heading {
+    font-size: clamp(1.4rem, 2.6vw, 1.85rem);
+    font-weight: 600;
+    margin: 6px 0 0;
+    color: var(--ink);
+  }
+
+  /* Expertise */
+
+  .tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     list-style: none;
     margin: 0;
     padding: 0;
   }
 
-  .expertise-grid li {
-    background: var(--card);
+  .tag-cloud li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
     border: 1px solid var(--line);
-    border-left: 4px solid var(--blue);
-    border-radius: var(--radius);
-    padding: 12px 14px;
-    font-size: .95rem;
-    font-weight: 500;
+    border-radius: 999px;
+    padding: 9px 16px;
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--ink);
   }
+
+  .tag-cloud li::before {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  /* Experience */
+
+  .job-list { border-top: 1px solid var(--line); }
 
   .job {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 20px 22px;
-    margin-bottom: 16px;
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
   }
 
-  .job-head {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 8px;
+  .job-meta {
+    color: var(--ink-soft);
   }
 
-  .job-title { font-weight: 700; color: var(--navy); font-size: 1.02rem; }
-  .job-title .company { color: var(--blue); font-weight: 700; }
   .job-dates {
-    font-size: .85rem;
+    font-size: .78rem;
     font-weight: 700;
-    color: #fff;
-    background: var(--blue);
-    padding: 3px 10px;
-    border-radius: 999px;
-    white-space: nowrap;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    color: var(--accent-ink);
+    margin-bottom: 6px;
   }
 
-  .job p { margin: 0 0 8px; color: var(--muted); font-size: .95rem; }
+  .job-company {
+    font-size: .88rem;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
 
-  .job ul {
-    margin: 8px 0 0;
-    padding-left: 20px;
+  .job-title {
+    font-weight: 700;
     color: var(--ink);
+    font-size: 1.05rem;
+    margin: 0 0 10px;
+  }
+
+  .job p.job-desc {
+    margin: 0 0 10px;
+    color: var(--ink-soft);
     font-size: .95rem;
   }
 
-  .job ul li { margin-bottom: 5px; }
-
-  .additional-list {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 18px 22px;
+  .job ul {
+    margin: 10px 0 0;
+    padding-left: 18px;
+    color: var(--ink);
+    font-size: .93rem;
   }
 
-  .additional-list div { margin-bottom: 6px; font-size: .95rem; }
-  .additional-list div:last-child { margin-bottom: 0; }
-  .additional-list .company { color: var(--muted); }
+  .job ul li { margin-bottom: 6px; }
+
+  .additional-list {
+    margin-top: 8px;
+  }
+
+  .additional-list div {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: .92rem;
+  }
+
+  .additional-list .company { color: var(--ink-soft); }
+
+  .sub-heading {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--ink);
+    font-size: 1.1rem;
+    margin: 36px 0 4px;
+  }
+
+  /* Education */
 
   .two-col {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 24px;
+    gap: 28px;
   }
 
   .edu-block {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 18px 22px;
+    padding: 22px 0 0;
+    border-top: 2px solid var(--accent);
   }
 
   .edu-block h3 {
-    margin: 0 0 4px;
-    font-size: 1rem;
-    color: var(--navy);
+    margin: 0 0 6px;
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--ink);
   }
 
-  .edu-block p { margin: 2px 0; color: var(--muted); font-size: .92rem; }
+  .edu-block p { margin: 2px 0; color: var(--ink-soft); font-size: .92rem; }
 
   .chip-list {
     display: flex;
@@ -252,37 +438,64 @@
   }
 
   .chip {
-    background: #eaf0fd;
-    color: var(--navy);
+    background: var(--surface);
+    border: 1px solid var(--line);
+    color: var(--ink);
     border-radius: 999px;
-    padding: 6px 14px;
-    font-size: .85rem;
-    font-weight: 600;
+    padding: 7px 15px;
+    font-size: .83rem;
+    font-weight: 500;
   }
+
+  /* Awards */
 
   .awards-list {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    columns: 2;
+    column-gap: 40px;
   }
 
   .awards-list li {
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-left: 4px solid #d4a418;
-    border-radius: var(--radius);
-    padding: 10px 14px;
+    break-inside: avoid;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 13px 0;
+    border-bottom: 1px solid var(--line);
     font-size: .92rem;
   }
 
+  .awards-list li::before {
+    content: "";
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+    transform: translateY(-2px);
+  }
+
+  /* Footer */
+
   footer {
-    text-align: center;
-    padding: 28px 24px 40px;
-    color: var(--muted);
+    background: var(--dark);
+    color: var(--on-dark-soft);
+    padding: 40px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
     font-size: .85rem;
+  }
+
+  footer .brand-tag {
+    margin-bottom: 0;
   }
 
   #backToTop {
@@ -293,11 +506,11 @@
     height: 44px;
     border-radius: 50%;
     border: none;
-    background: var(--blue);
+    background: var(--accent);
     color: #fff;
     font-size: 1.1rem;
     cursor: pointer;
-    box-shadow: 0 4px 14px rgba(0,0,0,.2);
+    box-shadow: 0 8px 20px rgba(0,0,0,.25);
     opacity: 0;
     pointer-events: none;
     transition: opacity .2s ease, transform .2s ease;
@@ -310,42 +523,48 @@
 
   #backToTop:hover { transform: translateY(-2px); }
 
-  @media (max-width: 720px) {
+  @media (max-width: 760px) {
     nav.site-nav {
       position: absolute;
       top: 100%;
       left: 0;
       right: 0;
-      background: var(--navy);
+      background: var(--paper);
+      border-bottom: 1px solid var(--line);
       display: none;
       flex-direction: column;
-      padding: 8px 24px 16px;
+      padding: 8px 28px 18px;
     }
     nav.site-nav.open { display: flex; }
     nav.site-nav ul { flex-direction: column; gap: 4px; }
+    nav.site-nav a { color: var(--ink-soft) !important; }
     .nav-toggle { display: inline-block; }
-    .topbar { position: sticky; }
-    .expertise-grid { grid-template-columns: 1fr 1fr; }
-    .two-col { grid-template-columns: 1fr; }
-    .awards-list { grid-template-columns: 1fr; }
-  }
 
-  @media (max-width: 480px) {
-    .expertise-grid { grid-template-columns: 1fr; }
+    .hero-grid { grid-template-columns: 1fr; gap: 36px; }
+    .hero-photo-col { order: -1; }
+    .hero-photo-wrap { max-width: 220px; }
+    .summary { max-width: none; }
+
+    .job { grid-template-columns: 1fr; gap: 8px; }
+    .two-col { grid-template-columns: 1fr; }
+    .awards-list { columns: 1; }
   }
 
   @media print {
     .topbar, #backToTop { display: none !important; }
-    header.hero { background: var(--navy) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    header.hero { background: var(--dark) !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     body { background: #fff; }
   }
 </style>
 </head>
 <body>
 
-<div class="topbar">
-  <div class="topbar-inner">
-    <span class="topbar-name">Emmett Scott Hynous</span>
+<div class="topbar" id="topbar">
+  <div class="wrap topbar-inner">
+    <a class="mark" href="#top">
+      <span class="mark-badge">ESH</span>
+      <span class="mark-name">Emmett Scott Hynous</span>
+    </a>
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">&#9776;</button>
     <nav class="site-nav" id="siteNav">
       <ul>
@@ -360,33 +579,63 @@
 </div>
 
 <header class="hero" id="summary">
-  <div class="hero-inner">
-    <h1>Emmett Scott Hynous</h1>
-    <p class="title">Sales &amp; Business Growth Leader</p>
+  <div class="wrap">
+    <div id="top"></div>
+    <div class="hero-grid">
+      <div>
+        <span class="brand-tag">#yourHynous</span>
+        <h1>Emmett Scott Hynous</h1>
+        <p class="title">Sales &amp; Business Growth Leader</p>
 
-    <div class="contact-row">
-      <span>&#9993; <a href="mailto:ehynous@gmail.com">ehynous@gmail.com</a></span>
-      <span>&#128222; (313) 378-7755</span>
-      <span>&#128205; Grosse Pointe Farms, MI 48236</span>
-      <span>&#128279; <a href="https://www.linkedin.com/in/ehynous" target="_blank" rel="noopener">LinkedIn</a></span>
+        <p class="summary">
+          Strategic enterprise sales leader specializing in digital transformation and legacy modernization
+          solutions for Fortune 500 companies. Track record of building high-performance teams and exceeding
+          revenue targets through complex technical sales cycles — with proven success in developing long-term
+          client partnerships and driving market share growth.
+        </p>
+
+        <div class="contact-row">
+          <a href="mailto:ehynous@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18v12H3z"/><path d="M3 7l9 6 9-6"/></svg>
+            ehynous@gmail.com
+          </a>
+          <span class="static">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.7a2 2 0 0 1-.5 2.1L8 9.7a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.5 2.7.6a2 2 0 0 1 1.7 2.1z"/></svg>
+            (313) 378-7755
+          </span>
+          <span class="static">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Grosse Pointe Farms, MI
+          </span>
+          <a href="https://www.linkedin.com/in/ehynous" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/><path d="M10 9h4v2c.6-1.2 2-2.3 4-2.3 3.4 0 4 2 4 5.1V21h-4v-6.2c0-1.5 0-3.4-2.1-3.4S14 13 14 14.7V21h-4z"/></svg>
+            LinkedIn
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-photo-col">
+        <div class="hero-photo-wrap">
+          <div class="hero-photo">
+            <img src="assets/images/emmett-hynous.jpg" alt="Portrait of Emmett Scott Hynous" width="720" height="792">
+          </div>
+        </div>
+      </div>
     </div>
-
-    <p class="summary">
-      Strategic enterprise sales leader specializing in digital transformation and legacy modernization
-      solutions for Fortune 500 companies. Track record of building high-performance teams and exceeding
-      revenue targets through complex technical sales cycles. Expertise spans legacy modernization, cloud
-      migration, and AI-enabled solutions, with proven success in developing long-term client partnerships
-      and driving market share growth. Data-driven approach to pipeline management and sales optimization,
-      consistently delivering exceptional results through strategic account planning and team development.
-    </p>
   </div>
 </header>
 
-<main>
+<main class="wrap">
 
   <section id="expertise">
-    <h2 class="section-title">Areas of Expertise</h2>
-    <ul class="expertise-grid">
+    <div class="section-head">
+      <span class="section-num">01</span>
+      <div>
+        <p class="eyebrow">Focus</p>
+        <h2 class="section-heading">Areas of Expertise</h2>
+      </div>
+    </div>
+    <ul class="tag-cloud">
       <li>Team Leadership &amp; Development</li>
       <li>Customer Relationship Management</li>
       <li>Strategic Sales Planning</li>
@@ -400,108 +649,137 @@
   </section>
 
   <section id="experience">
-    <h2 class="section-title">Career Experience</h2>
-
-    <article class="job">
-      <div class="job-head">
-        <span class="job-title">Director of Business Development, Cloud Business Unit <span class="company">— Trianz</span></span>
-        <span class="job-dates">2026 – Present</span>
+    <div class="section-head">
+      <span class="section-num">02</span>
+      <div>
+        <p class="eyebrow">Track Record</p>
+        <h2 class="section-heading">Career Experience</h2>
       </div>
-      <p>
-        Build specialist relationships across AWS Industries teams to establish new named-account coverage and
-        pipeline generation motions for Trianz Concierto&nbsp;based cloud migration and modernization assessments.
-        Drive specialist relationships across AWS mainframe &amp; legacy modernization teams to establish new
-        named-account coverage and pipeline generation motions for Trianz Concierto + ATX assessments, targeting
-        auto &amp; manufacturing and healthcare &amp; life sciences segments.
-      </p>
-      <ul>
-        <li>Executed the AWS RAPID program across the UK &amp; Ireland, on the ground in London — a co-sell motion with AWS targeting high-propensity VMware/Broadcom displacement accounts with no existing delivery partner.</li>
-      </ul>
-    </article>
+    </div>
 
-    <article class="job">
-      <div class="job-head">
-        <span class="job-title">Sales Director <span class="company">— Astadia (an Amdocs company)</span></span>
-        <span class="job-dates">2025 – 2026</span>
-      </div>
-      <p>
-        Led application modernization efforts to serve clients, including strategic assessment of clients'
-        existing mainframe ecosystems, migrating applications to the cloud, language migration, and
-        re-architecting. Acted as internal champion, building valued and positive relationships with various
-        internal Amdocs account teams and customers, facilitating introductions, enablement activities, and
-        customer workshops/deep dives.
-      </p>
-    </article>
+    <div class="job-list">
+      <article class="job">
+        <div class="job-meta">
+          <div class="job-dates">2026 – Present</div>
+          <div class="job-company">Trianz</div>
+        </div>
+        <div>
+          <h3 class="job-title">Director of Business Development, Cloud Business Unit</h3>
+          <p class="job-desc">
+            Build specialist relationships across AWS Industries teams to establish new named-account coverage and
+            pipeline generation motions for Trianz Concierto&nbsp;based cloud migration and modernization assessments.
+            Drive specialist relationships across AWS mainframe &amp; legacy modernization teams to establish new
+            named-account coverage and pipeline generation motions for Trianz Concierto + ATX assessments, targeting
+            auto &amp; manufacturing and healthcare &amp; life sciences segments.
+          </p>
+          <ul>
+            <li>Executed the AWS RAPID program across the UK &amp; Ireland, on the ground in London — a co-sell motion with AWS targeting high-propensity VMware/Broadcom displacement accounts with no existing delivery partner.</li>
+          </ul>
+        </div>
+      </article>
 
-    <article class="job">
-      <div class="job-head">
-        <span class="job-title">Vice President of Global Sales <span class="company">— AveriSource (start-up)</span></span>
-        <span class="job-dates">2023 – 2025</span>
-      </div>
-      <p>
-        Led global sales operations, driving business growth and revenue strategies. Oversaw cross-functional
-        teams and developed comprehensive sales initiatives to expand market presence, strengthen client
-        relationships, and optimize performance across diverse markets.
-      </p>
-      <ul>
-        <li>Generated $2.9M in annual revenue in FY'24.</li>
-        <li>Increased FY'24 sales pipeline by 250%, from $10M to $35M, by leveraging new business development initiatives and targeted lead generation efforts.</li>
-        <li>Built and scaled a high-performing global sales team, attracting top talent and enhancing overall sales capacity.</li>
-        <li>Designed and executed a comprehensive Go-to-Market (GTM) strategy that drove substantial market penetration and accelerated client acquisition by strategically onboarding key System Integrator partners.</li>
-        <li>Streamlined and implemented new internal sales processes, including automation of quote-to-cash functionality in SFDC, improving cross-department collaboration and operational efficiency.</li>
-      </ul>
-    </article>
+      <article class="job">
+        <div class="job-meta">
+          <div class="job-dates">2025 – 2026</div>
+          <div class="job-company">Astadia (an Amdocs company)</div>
+        </div>
+        <div>
+          <h3 class="job-title">Sales Director</h3>
+          <p class="job-desc">
+            Led application modernization efforts to serve clients, including strategic assessment of clients'
+            existing mainframe ecosystems, migrating applications to the cloud, language migration, and
+            re-architecting. Acted as internal champion, building valued and positive relationships with various
+            internal Amdocs account teams and customers, facilitating introductions, enablement activities, and
+            customer workshops/deep dives.
+          </p>
+        </div>
+      </article>
 
-    <article class="job">
-      <div class="job-head">
-        <span class="job-title">North America Sales Director, COBOL &amp; Mainframe Modernization <span class="company">— Micro Focus (OpenText)</span></span>
-        <span class="job-dates">2014 – 2023</span>
-      </div>
-      <p>
-        Led enterprise sales initiatives for legacy modernization solutions, driving strategic growth across
-        North America. Developed and executed comprehensive go-to-market strategies resulting in consistent
-        revenue growth. Partnered with sales engineering teams to deliver customized solution demonstrations
-        and technical proposals for Fortune 500 clients. Built and managed a multi-million-dollar pipeline
-        through targeted account strategies and strategic partnerships. Collaborated with marketing and
-        product teams on demand generation campaigns in the legacy modernization space. Recruited and
-        developed high-performing sales teams, consistently achieving quota targets.
-      </p>
-      <ul>
-        <li>Drove exceptional revenue performance, achieving 177% of annual quota in 2020 and 118% in 2021 through strategic enterprise solution sales.</li>
-        <li>Honored with two Micro Focus Achiever's Club inductions — Kauai (2021) and Oahu (2020) — for outstanding results.</li>
-        <li>Propelled and maintained 3X pipeline growth rate against quota while consistently surpassing activity metrics and sales performance targets.</li>
-        <li>Maximized ROI of all products and enhanced sales performance through clarification of go-to-market strategy.</li>
-        <li>Enabled 70% of sales team to achieve established sales quota in 2022.</li>
-      </ul>
-    </article>
+      <article class="job">
+        <div class="job-meta">
+          <div class="job-dates">2023 – 2025</div>
+          <div class="job-company">AveriSource (start-up)</div>
+        </div>
+        <div>
+          <h3 class="job-title">Vice President of Global Sales</h3>
+          <p class="job-desc">
+            Led global sales operations, driving business growth and revenue strategies. Oversaw cross-functional
+            teams and developed comprehensive sales initiatives to expand market presence, strengthen client
+            relationships, and optimize performance across diverse markets.
+          </p>
+          <ul>
+            <li>Generated $2.9M in annual revenue in FY'24.</li>
+            <li>Increased FY'24 sales pipeline by 250%, from $10M to $35M, by leveraging new business development initiatives and targeted lead generation efforts.</li>
+            <li>Built and scaled a high-performing global sales team, attracting top talent and enhancing overall sales capacity.</li>
+            <li>Designed and executed a comprehensive Go-to-Market (GTM) strategy that drove substantial market penetration and accelerated client acquisition by strategically onboarding key System Integrator partners.</li>
+            <li>Streamlined and implemented new internal sales processes, including automation of quote-to-cash functionality in SFDC, improving cross-department collaboration and operational efficiency.</li>
+          </ul>
+        </div>
+      </article>
 
-    <article class="job">
-      <div class="job-head">
-        <span class="job-title">North American Sales Manager, COBOL &amp; Mainframe Modernization <span class="company">— Micro Focus</span></span>
-        <span class="job-dates">2013 – 2014</span>
-      </div>
-      <p>
-        Spearheaded North American client base, supervising all aspects of key accounts including business
-        development, logistics, and client services. Completed Leadership Training Program and served as
-        Sales Academy I and II Mentor/Trainer. Coordinated with the customer success team to address customer
-        needs, resolve issues, and drive retention and upselling opportunities.
-      </p>
-      <ul>
-        <li>Optimized account profitability and devised innovative marketing and promotional strategies through management of sell-in and sell-through processes.</li>
-        <li>Expanded business portfolio by cultivating a robust network of customers and industry contacts, fueling sales development and securing valuable referrals.</li>
-        <li>Generated new accounts by actively assessing client needs, utilizing upselling techniques, and cultivating strategic business relationships.</li>
-      </ul>
-    </article>
+      <article class="job">
+        <div class="job-meta">
+          <div class="job-dates">2014 – 2023</div>
+          <div class="job-company">Micro Focus (OpenText)</div>
+        </div>
+        <div>
+          <h3 class="job-title">North America Sales Director, COBOL &amp; Mainframe Modernization</h3>
+          <p class="job-desc">
+            Led enterprise sales initiatives for legacy modernization solutions, driving strategic growth across
+            North America. Developed and executed comprehensive go-to-market strategies resulting in consistent
+            revenue growth. Partnered with sales engineering teams to deliver customized solution demonstrations
+            and technical proposals for Fortune 500 clients. Built and managed a multi-million-dollar pipeline
+            through targeted account strategies and strategic partnerships. Collaborated with marketing and
+            product teams on demand generation campaigns in the legacy modernization space. Recruited and
+            developed high-performing sales teams, consistently achieving quota targets.
+          </p>
+          <ul>
+            <li>Drove exceptional revenue performance, achieving 177% of annual quota in 2020 and 118% in 2021 through strategic enterprise solution sales.</li>
+            <li>Honored with two Micro Focus Achiever's Club inductions — Kauai (2021) and Oahu (2020) — for outstanding results.</li>
+            <li>Propelled and maintained 3X pipeline growth rate against quota while consistently surpassing activity metrics and sales performance targets.</li>
+            <li>Maximized ROI of all products and enhanced sales performance through clarification of go-to-market strategy.</li>
+            <li>Enabled 70% of sales team to achieve established sales quota in 2022.</li>
+          </ul>
+        </div>
+      </article>
 
-    <h3 style="color:var(--navy); font-size:1.05rem; margin: 24px 0 12px;">Additional Experience</h3>
+      <article class="job">
+        <div class="job-meta">
+          <div class="job-dates">2013 – 2014</div>
+          <div class="job-company">Micro Focus</div>
+        </div>
+        <div>
+          <h3 class="job-title">North American Sales Manager, COBOL &amp; Mainframe Modernization</h3>
+          <p class="job-desc">
+            Spearheaded North American client base, supervising all aspects of key accounts including business
+            development, logistics, and client services. Completed Leadership Training Program and served as
+            Sales Academy I and II Mentor/Trainer. Coordinated with the customer success team to address customer
+            needs, resolve issues, and drive retention and upselling opportunities.
+          </p>
+          <ul>
+            <li>Optimized account profitability and devised innovative marketing and promotional strategies through management of sell-in and sell-through processes.</li>
+            <li>Expanded business portfolio by cultivating a robust network of customers and industry contacts, fueling sales development and securing valuable referrals.</li>
+            <li>Generated new accounts by actively assessing client needs, utilizing upselling techniques, and cultivating strategic business relationships.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+
+    <h3 class="sub-heading">Additional Experience</h3>
     <div class="additional-list">
-      <div><strong>Sr. Inside Sales Representative | Inside Sales Representative</strong> <span class="company">— Micro Focus</span></div>
-      <div><strong>Inside Pre-Sales / Business Development</strong> <span class="company">— Compuware Corporation</span></div>
+      <div><strong>Sr. Inside Sales Representative | Inside Sales Representative</strong> <span class="company">Micro Focus</span></div>
+      <div><strong>Inside Pre-Sales / Business Development</strong> <span class="company">Compuware Corporation</span></div>
     </div>
   </section>
 
   <section id="education">
-    <h2 class="section-title">Education</h2>
+    <div class="section-head">
+      <span class="section-num">03</span>
+      <div>
+        <p class="eyebrow">Foundation</p>
+        <h2 class="section-heading">Education</h2>
+      </div>
+    </div>
     <div class="two-col">
       <div class="edu-block">
         <h3>Master of Business Administration — Value-Driven Organizations</h3>
@@ -514,7 +792,7 @@
       </div>
     </div>
 
-    <h3 style="color:var(--navy); font-size:1.05rem; margin: 24px 0 12px;">Professional Training</h3>
+    <h3 class="sub-heading">Professional Training</h3>
     <div class="chip-list">
       <span class="chip">Leadership Training Program — Micro Focus</span>
       <span class="chip">SPI (Sales Performance International) — Compuware</span>
@@ -525,7 +803,13 @@
   </section>
 
   <section id="awards">
-    <h2 class="section-title">Honors &amp; Awards</h2>
+    <div class="section-head">
+      <span class="section-num">04</span>
+      <div>
+        <p class="eyebrow">Recognition</p>
+        <h2 class="section-heading">Honors &amp; Awards</h2>
+      </div>
+    </div>
     <ul class="awards-list">
       <li>Micro Focus Achiever's Club, Oahu — FY 2020</li>
       <li>Micro Focus Achiever's Club, Kauai — FY 2021</li>
@@ -540,7 +824,10 @@
 </main>
 
 <footer>
-  &copy; <span id="year"></span> Emmett Scott Hynous. Built with a single HTML file.
+  <div class="wrap footer-inner">
+    <span class="brand-tag">#yourHynous</span>
+    <span>&copy; <span id="year"></span> Emmett Scott Hynous</span>
+  </div>
 </footer>
 
 <button id="backToTop" aria-label="Back to top">&uarr;</button>
@@ -583,9 +870,12 @@
   }, { rootMargin: '-40% 0px -55% 0px' });
   sections.forEach(function (section) { observer.observe(section); });
 
-  // Back-to-top button
+  // Nav background + back-to-top on scroll
+  var topbar = document.getElementById('topbar');
   var backToTop = document.getElementById('backToTop');
   window.addEventListener('scroll', function () {
+    var scrolled = window.scrollY > 40;
+    topbar.classList.toggle('scrolled', scrolled);
     backToTop.classList.toggle('visible', window.scrollY > 400);
   });
   backToTop.addEventListener('click', function () {
